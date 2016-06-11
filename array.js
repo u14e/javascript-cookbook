@@ -62,3 +62,37 @@ var cells = document.querySelectorAll('td + td');
 [].forEach.call(cells, function(cell) {
 	sum += parseInt(cell.firstChild.data);
 });
+
+/*
+ * 6 使用关联数组存储表单元素名和值
+ */
+ <form id="form">
+ 	<label>value 1:</label><input type="text" id="first" /><br/ >
+ 	<label>value 2:</label><input type="text" id="second" /><br/ >
+ 	<label>value 3:</label><input type="text" id="third" /><br/ >
+ 	<label>value 4:</label><input type="text" id="fourth" /><br/ >
+ 	<button id="button">validate</button>
+ </form>
+ <div id="result"></div>
+ <script>
+ 	var form = document.getElementById('form');
+ 	var btn = document.getElementById('button');
+ 	btn.onclick = function(e) {
+ 		e.preventDefault();
+ 		var elems = form.elements;
+ 		var elemArray = {};
+ 		for (var i = 0; i < elems.length; i++) {
+ 			if (elems[i].type === 'text') {
+ 				elemArray[elems[i].id] = elems[i].value;
+ 			}
+ 		}
+
+ 		var str = '';
+ 		Object.keys(elemArray).forEach(function(key) {
+ 			var value = elemArray[key];
+ 			str += key + '->' + value + '<br />';
+ 		});
+
+ 		document.getElementById('result').innerHTML = str;
+ 	}
+ </script>
