@@ -128,3 +128,30 @@ data.sort(compare('age'));
 	{ name: 'a', age: 21 }
 ]
 */
+
+/*
+ * 4、通过循环调用indexof()来找到所有匹配的子字符串
+ */
+
+var stringValue = "jions ronwfownk fwiuh rwjfohfo rwjohjvo"
+var position = new Array();
+var pos = stringValue.indexOf("o");
+while (pos > -1) {
+    position.push(pos);
+    pos = stringValue.indexOf("o", pos + 1);
+}
+console.log(position);          // [2, 7, 11, 26, 29, 34, 38]
+
+/*
+ * 5、Math.random()生成随机数
+ */
+// 生成介于min和max之间的随机数（只包括min）
+function getRandom(min, max) {
+	return Math.random() * (max - min) + min;
+}
+// 生成介于min和max之间的随机整数（包括min和max）
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) + min);
+}
+// 从某个整数范围内随机选择一个值
+Math.floor(Math.random() * 可能值的总数 + 第一个可能值)
